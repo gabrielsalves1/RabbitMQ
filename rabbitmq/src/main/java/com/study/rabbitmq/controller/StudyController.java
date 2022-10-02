@@ -1,6 +1,7 @@
 package com.study.rabbitmq.controller;
 
 import com.rabbitmq.lib.constants.RabbitMQConstants;
+import com.rabbitmq.lib.dto.StudyDto;
 import com.study.rabbitmq.service.RabbitMQService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class StudyController {
     private RabbitMQService rabbitMQService;
 
     @PostMapping
-    private ResponseEntity insert(@RequestBody com.rabbitmq.lib.dto.StudyDto studyDto) {
+    private ResponseEntity insert(@RequestBody StudyDto studyDto) {
         this.rabbitMQService.sendMessage(RabbitMQConstants.QUEUE_STUDIES, studyDto);
 
         return new ResponseEntity(HttpStatus.OK);

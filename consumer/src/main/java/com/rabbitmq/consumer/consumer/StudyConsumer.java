@@ -10,8 +10,8 @@ public class StudyConsumer {
 
     @RabbitListener(queues = RabbitMQConstants.QUEUE_STUDIES)
     private void consumer(StudyDto studyDto) {
-        System.out.println(studyDto.name);
-        System.out.println(studyDto.duration);
+        System.out.println(studyDto.getName());
+        System.out.println(studyDto.getDuration());
         System.out.println("------------------------------------");
     }
 }
